@@ -37,20 +37,6 @@ describe('The CreateMailboxAck class', function() {
       }).to.throw(Error);
     });
 
-    it('should throw an Error if response.mustBeOnlyMailbox is not defined', function() {
-      expect(function() {
-        delete usualResponse.mustBeOnlyMailbox;
-        new jmap.CreateMailboxAck({}, usualResponse);
-      }).to.throw(Error);
-    });
-
-    it('should throw an Error if response.mustBeOnlyMailbox has not the expected type', function() {
-      expect(function() {
-        usualResponse.mustBeOnlyMailbox = 'true';
-        new jmap.CreateMailboxAck({}, usualResponse);
-      }).to.throw(Error);
-    });
-
     it('should assign responses fields as object properties', function() {
       expect(new jmap.CreateMailboxAck({}, usualResponse))
         .to.deep.equal({
